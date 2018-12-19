@@ -1,0 +1,183 @@
+<!-- Copyright (C) YGF. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="index.css" type="text/css" />
+    <link rel="stylesheet" href="menu/menu.css" type="text/css" />
+    <link rel="stylesheet" href="../terminal/terminal.css" type="text/css" />
+</head>
+
+<body class="monaco-shell vs-dark" aria-label="">
+    <div class="monaco-workbench" style="top: 0px; right: 0px; bottom: 0px; left: 0px; position: relative;width: 100%;height: 100%;">
+        <!--Top title bar and menu bar-->
+        <div class="part titlebar" style="background-color: rgb(60, 60, 60); color: rgb(204, 204, 204); width: 100%; height: 30px;-webkit-app-region: drag;">
+            <div class="titlebar-drag-region"></div>
+            <!--Top left icon-->
+            <div class="window-appicon"></div>
+            <!--Menu bar-->
+            <div class="menubar" role="menubar" style="height:30px">
+                <div class="menubar-menu-button" id="menu_file" role="menuitem" tabindex="-1" aria-label="文件" aria-haspopup="true" aria-keyshortcuts="Alt+f">
+                    <div class="menubar-menu-title" role="none">
+                        文件(F)
+                    </div>
+                </div>
+                <div class="menubar-menu-button" id="menu_edit" role="menuitem" tabindex="-1" aria-label="编辑" aria-haspopup="true" aria-keyshortcuts="Alt+e">
+                    <div class="menubar-menu-title" role="none">
+                        编辑(E)
+                    </div>
+                </div>
+                <div class="menubar-menu-button" id="menu_tools" role="menuitem" tabindex="-1" aria-label="工具" aria-haspopup="true" aria-keyshortcuts="Alt+t">
+                    <div class="menubar-menu-title" role="none">
+                        工具(T)
+                    </div>
+                </div>
+                <div class="menubar-menu-button" role="menuitem" tabindex="-1" aria-label="选项卡" aria-haspopup="true" aria-keyshortcuts="Alt+b">
+                    <div class="menubar-menu-title" role="none">
+                        选项卡(B)
+                    </div>
+                </div>
+                <div class="menubar-menu-button" role="menuitem" tabindex="-1" aria-label="窗口" aria-haspopup="true" aria-keyshortcuts="Alt+w">
+                    <div class="menubar-menu-title" role="none">
+                        窗口(W)
+                    </div>
+                </div>
+                <div class="menubar-menu-button" id="menu_help" role="menuitem" tabindex="-1" aria-label="帮助" aria-haspopup="true" aria-keyshortcuts="Alt+h">
+                    <div class="menubar-menu-title" role="none">
+                        帮助(H)
+                    </div>
+
+                </div>
+            </div>
+            <!--Title-->
+            <div class="window-title" style="position: absolute; left: 50%; transform: translate(-50%, 0px);">欢迎使用 - YShell</div>
+            <!--System button-->
+            <div class="window-controls-container">
+                <div class="window-icon-bg">
+                    <div class="window-icon window-minimize" onclick="on_btn_min()"></div>
+                </div>
+                <div class="window-icon-bg" id="sys_max">
+                    <div class="window-icon window-max-restore window-maximize" onclick="on_btn_max()"></div>
+                </div>
+                <div class="window-icon-bg" id="sys_restore" style="display: none">
+                    <div class="window-icon window-max-restore window-unmaximize" onclick="on_btn_restore()"></div>
+                </div>
+                <div class="window-icon-bg window-close-bg">
+                    <div class="window-icon window-close" onclick="on_btn_close()"></div>
+                </div>
+            </div>
+            <div class="resizer" aria-hidden="true" style="display: none;"></div>
+        </div>
+        <!--Left navigation bar-->
+        <div class="part activitybar left" role="navigation" style="background-color: rgb(51, 51, 51); height: 100%; top: 30px; bottom: 0px; left: 0px; position: absolute;">
+            <div class="content" style="width: 50px; height: 100%;">
+                <div class="composite-bar">
+                    <div class="monaco-action-bar vertical">
+                        <ul class="actions-container">
+                            <li class="action-item">
+                                <a class="action-label explore" id="left-explore" onclick="open_session_mgr()"></a>
+                            </li>
+                        </ul>
+                        <ul class="actions-container">
+                            <li class="action-item">
+                                <a class="action-label explore"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="global-activity" style="position: absolute;bottom:55px;">
+                    <div class="monaco-action-bar vertical">
+                        <ul class="actions-containerv">
+                            <li class="action-item">
+                                <a class="action-label update-activity" aria-label="管理" title="管理"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Left source page-->
+        <div class="part sidebar left" id="session_mgr" style="background-color:rgb(37, 37, 38);width:300px;height:100%;top:30px;left: 50px;display: none;">
+            <div class="composite title">
+                <div class="title-label">
+                    <h2 title="会话管理器" style="color: rgb(187,187,187);">会话管理器</h2>
+                </div>
+            </div>
+            <div class="monaco-action-bar panel">
+                <div class="panel-header expanded" style="height: 22px; line-height: 22px; background-color: rgba(128, 128, 128, 0.2);">
+                    <h3 class="title">已连接的会话</h3>
+                    <a class="panel-action-label icon action-close-all-files" title="全部关闭"></a>
+                </div>
+                <div>
+                    <div class="panel-item">
+                        <div class="hosts-ico" style="padding-left:30px;"><a>root@cnygf.net</a></div>
+                    </div>
+                    <div class="panel-item">
+                        <div class="hosts-ico" style="padding-left:30px;"><a>root@192.168.0.1</a></div>
+                    </div>
+                </div>
+                <div class="panel-header expanded" style="height: 22px; line-height: 22px; background-color: rgba(128, 128, 128, 0.2);">
+                    <h3 class="title">会话历史</h3>
+                    <a class="panel-action-label icon action-close-all-files" title="全部关闭"></a>
+                </div>
+                <div>
+                    <div class="panel-item">
+                        <div class="hosts-ico-close" style="padding-left:30px;"><a>root@cnygf.net</a></div>
+                    </div>
+                    <div class="panel-item">
+                        <div class="hosts-ico-close" style="padding-left:30px;"><a>root@cnygf.net</a></div>
+                    </div>
+                    <div class="panel-item">
+                        <div class="hosts-ico-close" style="padding-left:30px;"><a>root@cnygf.net</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="left-vertical" id="left-vertical" style="left: 296px; top: 30px;"></div>
+        </div>
+        <!--Right content page-->
+        <div class="part editor has-watermark" id="right-content" style="background-color:rgb(30,30,30);width: 100%; height:100%; top: 30px; right: 0px; bottom: 22px; left: 50px; position: absolute;">
+            <div class="tabs" style="background-color: rgb(37, 37, 38);">
+                <div class="tablelist" id="tablist">
+                </div>
+            </div>
+            <div class="right-content" id="right-content-page">
+            </div>
+
+        </div>
+        <!--Bottom state bar-->
+        <div class="part statusbar" id="statusbar" style="background-color: rgb(0, 122, 204); color: rgb(255, 255, 255); top:778px;position: absolute;">
+            <div class="statusbar_item_left">
+                <div class="statusbar_item">
+                    <a>ssh://root@cnygf.net</a>
+                </div>
+            </div>
+            <div class="statusbar_item_right right">
+                <div class="statusbar_item">
+                    <a>SSH2</a>
+                </div>
+                <div class="statusbar_item">
+                    <a>YSHELL</a>
+                </div>
+                <div class="statusbar_item">
+                    <a>2个会话</a>
+                </div>
+                <div class="statusbar_item">
+                    <a>CAP</a>
+                </div>
+                <div class="statusbar_item">
+                    <a>NUM</a>
+                </div>
+                <div class="statusbar_item">
+                    <a class="send-feedback">反馈</a>
+                </div>
+            </div>
+        </div>
+</body>
+<!-- Startup index.js -->
+<script src="menu/menu.js"></script>
+<script src="tab/tab.js"></script>
+<script src="../terminal/terminal.js"></script>
+<script src="index.js"></script>
+
+</html>
