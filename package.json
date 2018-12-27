@@ -1,26 +1,29 @@
 {
-    "name": "yshell",
-    "version": "1.0.1",
-    "main": "./src/main.js",
-    "description": "a ssh client",
-    "author": {
-        "name": "YGF",
-        "email": "ygf@cnhonker.com",
-        "github": "https://github.com/cn-ygf"
-    },
-    "scripts": {
-        "start": "electron .",
-        "build": "asar pack . ./build/app.asar"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cn-ygf/yshell"
-    },
-    "bugs": {
-        "url": "https://github.com/cn-ygf/yshell/issues"
-    },
-    "dependencies": {
-        "electron-json-storage": "^4.1.5",
-        "ssh2": "^0.6.1"
-    }
+  "name": "yshell",
+  "version": "1.0.1",
+  "main": "./src/main.js",
+  "description": "a ssh client",
+  "author": {
+    "name": "YGF",
+    "email": "ygf@cnhonker.com",
+    "github": "https://github.com/cn-ygf"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "asar pack . ./build/app.asar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cn-ygf/yshell"
+  },
+  "bugs": {
+    "url": "https://github.com/cn-ygf/yshell/issues"
+  },
+  "devDependencies": {
+    "electron": "3.0.13"
+  },
+  "dependencies": {
+    "electron-json-storage": "^4.1.5",
+    "ssh2": "^0.6.1"
+  }
 }
