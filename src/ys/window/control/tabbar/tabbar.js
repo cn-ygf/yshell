@@ -8,4 +8,4 @@ function UITableBar(options) {}
 function UITablePage(options) {}
 
 exports.UITableBar = UITableBar
-export.UITablePage = UITablePage
+exports.UITablePage = UITablePage
