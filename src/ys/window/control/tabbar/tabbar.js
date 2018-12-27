@@ -2,8 +2,10 @@
  *  Copyright (c) YGF. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-class UITabview extends UIControl {
-    constructor() {
-        super()
-    }
-}
+
+function UITableBar(options) {}
+
+function UITablePage(options) {}
+
+exports.UITableBar = UITableBar
+export.UITablePage = UITablePage
