@@ -8,11 +8,15 @@ const ipc = require('electron').ipcRenderer
 const UITitleBar = require('./titlebar/titlebar').UITitleBar
 const UIMenuBar = require('./control/menu/menu').UIMenuBar
 const UISysButton = require('./sysbutton/sysbutton').UISysButton
+const UINavigationBar = require('./navigationbar/navigationbar').UINavigationBar
+const UIStateBar = require('./statebar/statebar').UIStateBar
 
 /*---------------------------------------------------------------------------------------------
  * Init window layout
  *--------------------------------------------------------------------------------------------*/
 let titlebar
+let navigationbar
+let statebar
 
 // init title bar
 function init_title_bar() {
@@ -92,5 +96,34 @@ function init_title_bar() {
     titlebar.show()
 }
 
+// init navigationbar
+function init_navigation_bar() {
+    var options = {}
+    options.backgroundColor = 'rgb(51,51,51)'
+    options.width = '50px'
+    navigationbar = new UINavigationBar(options)
+    navigationbar.show()
+}
+
+//init statebar
+function init_state_bar() {
+    var options = {}
+    options.backgroundColor = 'rgb(0,122,204)'
+    options.color = 'rgb(255,255,255)'
+    options.height = '22px'
+    statebar = new UIStateBar(options)
+    statebar.show()
+}
 
 init_title_bar()
+init_navigation_bar()
+init_state_bar()
+
+
+ipc.on('on_window_blur', () => {
+    titlebar.setBackgroundColor('rgb(51,51,51)')
+})
+
+ipc.on('on_window_focus', () => {
+    titlebar.setBackgroundColor('rgb(60,60,60)')
+})

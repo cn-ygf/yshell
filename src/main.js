@@ -67,6 +67,14 @@ app.on('activate', () => {
     }
 })
 
+app.on('browser-window-blur', () => {
+    win.webContents.send('on_window_blur')
+})
+
+app.on('browser-window-focus', () => {
+    win.webContents.send('on_window_focus')
+})
+
 ipc.on('on_btn_close', () => {
     save_config()
     win.close()

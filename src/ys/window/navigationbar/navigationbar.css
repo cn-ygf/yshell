@@ -2,3 +2,10 @@
  *  Copyright (c) YGF. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+
+.navigationbar {
+    top: 30px;
+    left: 0px;
+    height: 100%;
+    position: absolute;
+}

@@ -37,6 +37,9 @@ function UITitleBar(options) {
     this.setIcon = function(icon) {
         this.icon_div.style.backgroundImage = icon
     }
+    this.setBackgroundColor = function(color) {
+        this.main_div.style.backgroundColor = color
+    }
 }
 
 
