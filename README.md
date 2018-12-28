@@ -8,9 +8,10 @@
 
 ## 快速开始
 #### 下载和编译
-    需要安装nodejs、electron
+    需要安装nodejs
     git clone https://github.com/cn-ygf/yshell.git
     cd yshell
+    npm install
     npm start
 #### 打包成app
     npm run build
