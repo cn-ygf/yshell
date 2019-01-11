@@ -10,6 +10,7 @@ const UIMenuBar = require('./control/menu/menu').UIMenuBar
 const UISysButton = require('./sysbutton/sysbutton').UISysButton
 const UINavigationBar = require('./navigationbar/navigationbar').UINavigationBar
 const UIStateBar = require('./statebar/statebar').UIStateBar
+const UIPanel = require('./panel/panel').UIPanel
 
 /*---------------------------------------------------------------------------------------------
  * Init window layout
@@ -17,6 +18,7 @@ const UIStateBar = require('./statebar/statebar').UIStateBar
 let titlebar
 let navigationbar
 let statebar
+let panel
 
 // init title bar
 function init_title_bar() {
@@ -76,7 +78,8 @@ function init_title_bar() {
     }, {
         label: '帮助(H)',
         items: [{
-            label: '欢迎使用'
+            label: '欢迎使用',
+            click: function() {}
         }, {
             label: '切换开发人员工具',
             click: function() {
@@ -101,8 +104,23 @@ function init_navigation_bar() {
     var options = {}
     options.backgroundColor = 'rgb(51,51,51)'
     options.width = '50px'
+    options.items = [{
+        title: '会话管理器',
+        image: 'url(./navigationbar/smg.svg) no-repeat 50% 50%',
+        click: function() {}
+    }, {
+        title: '测试',
+        image: 'url(./navigationbar/so.svg) no-repeat 50% 50%',
+        click: function() {}
+    }, {
+        title: '设置',
+        image: 'url(./navigationbar/setting.svg) no-repeat 50% 50%',
+        click: function() {},
+        align: 'bottom'
+    }]
     navigationbar = new UINavigationBar(options)
     navigationbar.show()
+    navigationbar.setSelected(0)
 }
 
 //init statebar
@@ -110,20 +128,35 @@ function init_state_bar() {
     var options = {}
     options.backgroundColor = 'rgb(0,122,204)'
     options.color = 'rgb(255,255,255)'
-    options.height = '22px'
+    options.height = '22'
     statebar = new UIStateBar(options)
     statebar.show()
+}
+
+//init panel
+function init_panel() {
+    var options = {}
+    panel = new UIPanel(options)
+    panel.show()
 }
 
 init_title_bar()
 init_navigation_bar()
 init_state_bar()
+init_panel()
 
 
+// window lose focus
 ipc.on('on_window_blur', () => {
     titlebar.setBackgroundColor('rgb(51,51,51)')
 })
 
+// window get focus
 ipc.on('on_window_focus', () => {
     titlebar.setBackgroundColor('rgb(60,60,60)')
+})
+
+// Window size changed
+ipc.on('on_resize', (event, args) => {
+    statebar.setTop(args[1])
 })

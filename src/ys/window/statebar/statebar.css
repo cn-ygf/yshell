@@ -10,4 +10,5 @@
     cursor: default;
     font-size: 12px;
     display: inline-block;
+    z-index: 99;
 }

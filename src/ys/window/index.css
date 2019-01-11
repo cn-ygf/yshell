@@ -58,6 +58,7 @@ button:focus {
     overflow: hidden;
     font-size: 11px;
     user-select: none;
+    background: transparent;
 }
 
 .monaco-workbench {

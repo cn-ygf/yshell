@@ -3,26 +3,12 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-.navigationbar {
-    top: 30px;
-    left: 0px;
+.panel {
+    background-color: rgb(37, 37, 38);
+    width: 300px;
     height: 100%;
+    top: 30px;
+    left: 50px;
     position: absolute;
-}
-
-.navigationbar .item_bg {
-    width: 50px;
-    height: 50px;
-    display: block;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-}
-
-.checked {
-    background-color: rgb(255, 255, 255) !important;
-}
-
-.navigationbar .item_bg:hover {
-    background-color: rgb(255, 255, 255);
+    z-index: 1;
 }

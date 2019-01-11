@@ -8,7 +8,6 @@ const ipc = require('electron').ipcMain
 const dialog = require('electron').dialog
 const storage = require('electron-json-storage');
 
-
 // main window
 let win
 
@@ -18,11 +17,15 @@ g_param.isshowsessionmgr = false
 
 // create main window
 function createWindow() {
-    // read config
+    app.setAppUserModelId('net.cnygf.yshell')
+        // read config
     storage.get('config', function(err, config) {
         win = new BrowserWindow({ width: config.width, height: config.height, frame: false, resizable: true, show: false })
         win.loadFile('./src/ys/window/index.html')
-
+        win.setBackgroundColor('#1E1E1E')
+        win.setTitle('YShell by YGF')
+        win.setIcon('./src/ys/window/logo.png')
+        win.setOverlayIcon('./src/ys/window/logo.png', 'Description for overlay')
         win.on('ready-to-show', () => {
             if (config.ismax) {
                 win.maximize()
